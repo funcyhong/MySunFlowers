@@ -3,9 +3,7 @@ package com.hong.mysunflowers.https
 import com.hong.mysunflowers.base.BasePagingResp
 import com.hong.mysunflowers.base.BaseRepository
 import com.hong.mysunflowers.base.BaseResponse
-import com.hong.mysunflowers.bean.AnswersResponse
-import com.hong.mysunflowers.bean.LoginRegisterBean
-import com.hong.mysunflowers.bean.PageBean
+import com.hong.mysunflowers.bean.*
 import com.hong.mysunflowers.entitys.AnswersEntity
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -35,6 +33,12 @@ interface ApiService {
         @Field("username") username: String,
         @Field("password") password: String,
     ): BaseResponse<LoginRegisterBean>
+
+    /**
+     * 获取体系列表数据
+     */
+    @GET("tree/json")
+    suspend fun getBodySystemList(): BaseResponse<BasePagingResp<List<SystemResponse>>>
 
     /**
      * 获取问答列表数据

@@ -55,10 +55,25 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_systemFragment_to_systemBodyFragment"
+            app:destination="@id/systemBodyFragment" />
     </fragment>
     <fragment
         android:id="@+id/mineFragment"
         android:name="com.hong.mysunflowers.fragments.MineFragment"
         android:label="MineFragment"
         tools:layout="@layout/fragment_mine" />
+    <fragment
+        android:id="@+id/systemBodyFragment"
+        android:name="com.hong.mysunflowers.fragments.SystemBodyFragment"
+        android:label="SystemBodyFragment" >
+        <action
+            android:id="@+id/action_systemBodyFragment_to_systemNavigationFragment"
+            app:destination="@id/systemNavigationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/systemNavigationFragment"
+        android:name="com.hong.mysunflowers.fragments.SystemNavigationFragment"
+        android:label="SystemNavigationFragment" />
 </navigation>

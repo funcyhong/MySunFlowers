@@ -1,11 +1,11 @@
 package com.hong.mysunflowers.repositorys
 
 import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.hong.mysunflowers.base.BaseRepository
 import com.hong.mysunflowers.bean.AnswersResponse
 import com.hong.mysunflowers.bean.PageBean
+import com.hong.mysunflowers.config.PagerConfig.Companion.config
 import com.hong.mysunflowers.https.ApiService
 import com.hong.mysunflowers.pagingsources.AnswersPagingSource
 import kotlinx.coroutines.flow.Flow
@@ -14,17 +14,6 @@ import kotlinx.coroutines.flow.Flow
  * 问答
  */
 class AnswersRepository(private val service: ApiService) : BaseRepository<AnswersResponse>() {
-
-    companion object {
-        private const val PAGE_SIZE = 10
-        val config = PagingConfig(
-            pageSize = PAGE_SIZE,
-            prefetchDistance = 5,
-            initialLoadSize = 10,
-            enablePlaceholders = false,
-            maxSize = PAGE_SIZE * 3
-        )
-    }
 
 //    suspend fun getAnswersList(page: Int, liveData: BaseLiveData<AnswersResponse>){
 //        loadRepo({ service.getAnswersList(page) }, liveData)
