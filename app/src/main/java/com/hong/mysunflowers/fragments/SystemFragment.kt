@@ -4,7 +4,7 @@ import com.hong.mysunflowers.R
 import com.hong.mysunflowers.base.BaseFragment
 
 /**
- * 体系 界面
+ * 体系 主界面
  */
 class SystemFragment : BaseFragment() {
 

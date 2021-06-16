@@ -36,14 +36,14 @@ class AnswersFragment : BaseFragment() {
 
     private fun initRecycler() {
         adapter = AnswersAdapter(AnswersDiffCallBack())
+        adapter.withLoadStateFooter(FooterAdapter {
+            adapter.retry()
+        })
         lifecycleScope.launchWhenCreated {
             adapter.loadStateFlow.collectLatest {
                 it.refresh is LoadState.Loading
             }
         }
-        adapter.withLoadStateFooter(FooterAdapter {
-            adapter.retry()
-        })
         rv_answers.apply {
             layoutManager = LinearLayoutManager(context).apply {
                 orientation = LinearLayoutManager.VERTICAL
