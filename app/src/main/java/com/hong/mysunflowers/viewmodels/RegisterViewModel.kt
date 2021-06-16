@@ -22,6 +22,7 @@ class RegisterViewModel(private val repoRegister: RegisterRepository) : ViewMode
     }
 
     fun login(username: String, password: String) {
+        // 这里不需要手动去取消协程，会在该 view model 销毁时自动取消
         viewModelScope.launch {
             repoRegister.login(username, password, loginLiveData)
         }

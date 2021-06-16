@@ -1,9 +1,12 @@
 package com.hong.mysunflowers.fragments
 
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hong.mysunflowers.R
 import com.hong.mysunflowers.adapters.AnswersAdapter
+import com.hong.mysunflowers.adapters.FooterAdapter
 import com.hong.mysunflowers.base.BaseFragment
 import com.hong.mysunflowers.base.BaseResponse
 import com.hong.mysunflowers.base.DataState
@@ -14,6 +17,7 @@ import com.hong.mysunflowers.https.ApiService
 import com.hong.mysunflowers.repositorys.AnswersRepository
 import com.hong.mysunflowers.viewmodels.AnswersViewModel
 import kotlinx.android.synthetic.main.fragment_answers.*
+import kotlinx.coroutines.flow.collectLatest
 
 /**
  * 问答界面
@@ -27,35 +31,33 @@ class AnswersFragment : BaseFragment() {
 
     override fun init() {
         initRecycler()
-        initObserver()
         getAnswersList()
     }
 
     private fun initRecycler() {
-        rv_answers.layoutManager = LinearLayoutManager(context).apply {
-            orientation = LinearLayoutManager.VERTICAL
-        }
         adapter = AnswersAdapter(AnswersDiffCallBack())
-        rv_answers.adapter = adapter
-    }
-
-    private fun initObserver() {
-        val observer = Observer<BaseResponse<AnswersResponse>> {
-            when (it.dataState) {
-                DataState.STATE_LOADING ->
-                    println("STATE_LOADING")
-                DataState.STATE_SUCCESS ->
-                    adapter.submitList(it?.data?.datas)
-                else ->
-                    println(it.dataState)
+        lifecycleScope.launchWhenCreated {
+            adapter.loadStateFlow.collectLatest {
+                it.refresh is LoadState.Loading
             }
-
         }
-        answersViewModel.answersList.observe(this, observer)
+        adapter.withLoadStateFooter(FooterAdapter {
+            adapter.retry()
+        })
+        rv_answers.apply {
+            layoutManager = LinearLayoutManager(context).apply {
+                orientation = LinearLayoutManager.VERTICAL
+            }
+            adapter = this@AnswersFragment.adapter
+        }
     }
 
     private fun getAnswersList() {
-        answersViewModel.getAnswersList(0)
+        lifecycleScope.launchWhenCreated {
+            answersViewModel.getAnswersList().collectLatest {
+                adapter.submitData(it)
+            }
+        }
     }
 
     override fun getLayoutId(): Int {

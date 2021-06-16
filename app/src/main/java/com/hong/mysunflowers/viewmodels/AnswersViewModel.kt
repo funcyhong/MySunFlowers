@@ -2,19 +2,16 @@ package com.hong.mysunflowers.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hong.mysunflowers.base.BaseLiveData
-import com.hong.mysunflowers.bean.AnswersResponse
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.hong.mysunflowers.bean.PageBean
 import com.hong.mysunflowers.entitys.AnswersEntity
 import com.hong.mysunflowers.repositorys.AnswersRepository
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
 
 class AnswersViewModel(private val repository: AnswersRepository) : ViewModel() {
 
-    val answersList = BaseLiveData<AnswersResponse>()
+    fun getAnswersList(): Flow<PagingData<PageBean>> =
+        repository.getAnswersList().cachedIn(viewModelScope)
 
-    fun getAnswersList(page: Int) {
-        viewModelScope.launch {
-            repository.getAnswersList(page, answersList)
-        }
-    }
 }
