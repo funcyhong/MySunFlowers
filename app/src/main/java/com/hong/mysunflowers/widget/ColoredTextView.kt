@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.os.Build
 import android.util.AttributeSet
+import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatTextView
 import com.hong.mysunflowers.ktx.dp
@@ -30,7 +31,8 @@ private val CORNER_RADIUS = 5.dp
 private val X_PADDING = 16.dp.toInt()
 private val Y_PADDING = 8.dp.toInt()
 
-class ColoredTextView(context: Context, attrs: AttributeSet?) : AppCompatTextView(context, attrs) {
+class ColoredTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet?) :
+    AppCompatTextView(context, attrs) {
 
     private var paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val random = Random()
@@ -44,7 +46,13 @@ class ColoredTextView(context: Context, attrs: AttributeSet?) : AppCompatTextVie
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onDraw(canvas: Canvas) {
-        canvas.drawRoundRect(0f, 0f, width.toFloat(), height.toFloat(), CORNER_RADIUS, CORNER_RADIUS, paint)
+        canvas.drawRoundRect(0f,
+            0f,
+            width.toFloat(),
+            height.toFloat(),
+            CORNER_RADIUS,
+            CORNER_RADIUS,
+            paint)
         super.onDraw(canvas)
     }
 }

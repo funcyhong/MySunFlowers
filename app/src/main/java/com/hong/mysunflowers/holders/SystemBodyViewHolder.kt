@@ -1,8 +1,10 @@
 package com.hong.mysunflowers.holders
 
 import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hong.mysunflowers.bean.SystemResponse
+import com.hong.mysunflowers.widget.ColoredTextView
 import kotlinx.android.synthetic.main.item_body_system.view.*
 
 /**
@@ -19,6 +21,15 @@ class SystemBodyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         if (!needBindData) return
         item?.let {
             itemView.tv_title.text = it.name
+            if (!item.children.isNullOrEmpty()) {
+                for (index in item.children.indices) {
+                    val coloredTextView = ColoredTextView(itemView.context, null)
+                    coloredTextView.text = item.children[index].name
+                    val layoutParams = itemView.fl.layoutParams
+                    layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT
+                    itemView.fl.addView(coloredTextView,layoutParams)
+                }
+            }
             needBindData = true
         }
     }

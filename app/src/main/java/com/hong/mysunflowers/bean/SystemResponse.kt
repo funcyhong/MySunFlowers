@@ -6,7 +6,7 @@ package com.hong.mysunflowers.bean
  * Description 体系 数响应数据 data
  */
 data class SystemResponse(
-    val children: List<SystemBean>,
+    val children: List<SystemBean>?,
     val courseId: Int,
     val id: Int,
     val name: String,
