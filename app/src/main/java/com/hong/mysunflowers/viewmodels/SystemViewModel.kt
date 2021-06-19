@@ -2,11 +2,10 @@ package com.hong.mysunflowers.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
+import com.hong.mysunflowers.base.BaseLiveData
 import com.hong.mysunflowers.bean.SystemResponse
 import com.hong.mysunflowers.repositorys.SystemRepository
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
 /**
  * Created by funcyhong
@@ -15,7 +14,12 @@ import kotlinx.coroutines.flow.Flow
  */
 class SystemViewModel(private val repository: SystemRepository) : ViewModel() {
 
-    fun getBodyList(): Flow<PagingData<SystemResponse>> {
-        return repository.getBodyList().cachedIn(viewModelScope)
+    val systemBodyLiveData = BaseLiveData<List<SystemResponse>>()
+
+    // 获取体系列表
+    fun getBodyList(){
+        viewModelScope.launch {
+            repository.getBodyList(systemBodyLiveData)
+        }
     }
 }

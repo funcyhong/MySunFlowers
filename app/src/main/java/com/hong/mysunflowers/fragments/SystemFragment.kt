@@ -40,4 +40,6 @@ class SystemFragment : BaseFragment() {
     override fun getLayoutId(): Int {
         return R.layout.fragment_system
     }
+
+
 }

@@ -38,7 +38,7 @@ interface ApiService {
      * 获取体系列表数据
      */
     @GET("tree/json")
-    suspend fun getBodySystemList(): BaseResponse<BasePagingResp<List<SystemResponse>>>
+    suspend fun getBodySystemList(): BaseResponse<List<SystemResponse>>
 
     /**
      * 获取问答列表数据
