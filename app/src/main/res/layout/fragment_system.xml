@@ -10,15 +10,22 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/viewpager"
+        app:layout_constraintBottom_toTopOf="@id/vc"
         app:tabMode="auto" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager"
+    <com.hong.mysunflowers.widget.ViewPagerContainer
+        android:id="@+id/vc"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab" />
+        app:layout_constraintTop_toBottomOf="@id/tab">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.hong.mysunflowers.widget.ViewPagerContainer>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

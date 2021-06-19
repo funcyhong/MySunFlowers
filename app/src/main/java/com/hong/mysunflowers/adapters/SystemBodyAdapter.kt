@@ -22,6 +22,6 @@ class SystemBodyAdapter : ListAdapter<SystemResponse, SystemBodyViewHolder>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SystemBodyViewHolder {
         return SystemBodyViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_answers, parent, false))
+            .inflate(R.layout.item_body_system, parent, false))
     }
 }

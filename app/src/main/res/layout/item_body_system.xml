@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/home"
+        android:textColor="@color/color_333333"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/fl"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.hong.mysunflowers.widget.FlowLayout
+        android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京市" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="天津市" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上海市" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重庆市" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="河北省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="山西省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="辽宁省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="吉林省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="黑龙江省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="江苏省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="浙江省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安徽省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="福建省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="江西省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="山东省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="河南省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="湖北省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="湖南省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="广东省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="海南省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="四川省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="贵州省" />
+
+        <com.hong.mysunflowers.widget.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="云南省" />
+
+    </com.hong.mysunflowers.widget.FlowLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
