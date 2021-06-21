@@ -24,4 +24,9 @@ class SystemBodyAdapter : ListAdapter<SystemResponse, SystemBodyViewHolder>(
         return SystemBodyViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.item_body_system, parent, false))
     }
+
+    override fun onViewRecycled(holder: SystemBodyViewHolder) {
+        super.onViewRecycled(holder)
+        holder.recyclerTextView()
+    }
 }
