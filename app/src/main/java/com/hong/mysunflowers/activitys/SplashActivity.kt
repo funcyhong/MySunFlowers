@@ -3,7 +3,6 @@ package com.hong.mysunflowers.activitys
 import android.R.color
 import android.content.Intent
 import android.os.Build
-import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope

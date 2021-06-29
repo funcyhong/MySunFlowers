@@ -13,6 +13,7 @@ import com.hong.mysunflowers.repositorys.AnswersRepository
 import com.hong.mysunflowers.viewmodels.AnswersViewModel
 import kotlinx.android.synthetic.main.fragment_answers.*
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 /**
  * 问答界面
@@ -34,11 +35,14 @@ class AnswersFragment : BaseFragment() {
         adapter.withLoadStateFooter(FooterAdapter {
             adapter.retry()
         })
-        lifecycleScope.launchWhenCreated {
-            adapter.loadStateFlow.collectLatest {
-                it.refresh is LoadState.Loading
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest { loadStates ->
+                loadStates.refresh is LoadState.Loading
+                loadStates.prepend
             }
         }
+
         rv_answers.apply {
             layoutManager = LinearLayoutManager(context).apply {
                 orientation = LinearLayoutManager.VERTICAL
@@ -48,7 +52,7 @@ class AnswersFragment : BaseFragment() {
     }
 
     private fun getAnswersList() {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launch {
             answersViewModel.getAnswersList().collectLatest {
                 adapter.submitData(it)
             }

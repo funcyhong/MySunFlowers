@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".activitys.RegisterActivity" />
         <activity android:name=".activitys.LoginActivity" />
+        <activity android:name=".webview.WebViewActivity"/>
+        <activity android:name=".activitys.LikeActivity" />
     </application>
 
 </manifest>

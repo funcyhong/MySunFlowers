@@ -2,7 +2,8 @@ package com.hong.mysunflowers.adapters
 
 import androidx.fragment.app.Fragment
 import com.hong.mysunflowers.base.BaseFragmentStateAdapter
-import com.hong.mysunflowers.fragments.*
+import com.hong.mysunflowers.fragments.SystemBodyFragment
+import com.hong.mysunflowers.fragments.SystemNavigationFragment
 
 const val SYSTEM_BODY_PAGE_INDEX = 0
 const val SYSTEM_NAVIGATION_PAGE_INDEX = 1

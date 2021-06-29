@@ -1,10 +1,11 @@
 package com.hong.mysunflowers.https
 
 import com.hong.mysunflowers.base.BasePagingResp
-import com.hong.mysunflowers.base.BaseRepository
 import com.hong.mysunflowers.base.BaseResponse
-import com.hong.mysunflowers.bean.*
-import com.hong.mysunflowers.entitys.AnswersEntity
+import com.hong.mysunflowers.bean.ArticlesResponse
+import com.hong.mysunflowers.bean.LoginRegisterBean
+import com.hong.mysunflowers.bean.PageBean
+import com.hong.mysunflowers.bean.SystemResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -39,6 +40,12 @@ interface ApiService {
      */
     @GET("tree/json")
     suspend fun getBodySystemList(): BaseResponse<List<SystemResponse>>
+
+    /**
+     * 获取导航列表数据
+     */
+    @GET("navi/json")
+    suspend fun getNavigationSystemList(): BaseResponse<List<ArticlesResponse>>
 
     /**
      * 获取问答列表数据

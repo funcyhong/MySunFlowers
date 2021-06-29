@@ -3,8 +3,8 @@ package com.hong.mysunflowers.holders
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.hong.mysunflowers.bean.SystemResponse
-import com.hong.mysunflowers.utils.ToastUtil
+import com.hong.mysunflowers.bean.ArticlesResponse
+import com.hong.mysunflowers.webview.WebViewActivity
 import com.hong.mysunflowers.widget.ColoredTextView
 import com.hong.mysunflowers.widget.FlowLayout
 import kotlinx.android.synthetic.main.item_body_system.view.*
@@ -14,26 +14,26 @@ import java.util.*
 /**
  * Created by funcyhong
  * Date 2021/6/16 17:43
- * Description 体系 view holder
+ * Description 体系 --- 导航 view holder
  */
-class SystemBodyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class SystemNavigationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     // 主要是用来缓存 TextView
     private val mFlexItemTextViewCaches: Queue<ColoredTextView> = LinkedList()
 
-    fun bindData(item: SystemResponse?) {
+    fun bindData(item: ArticlesResponse?) {
         item?.let {
             itemView.tv_title.text = it.name
-            if (!item.children.isNullOrEmpty()) {
+            if (!item.articles.isNullOrEmpty()) {
                 itemView.fl.removeAllViews()
-                for (index in item.children.indices) {
+                for (index in item.articles.indices) {
                     val coloredTextView = createOrGetTextView()
-                    coloredTextView.text = item.children[index].name
+                    coloredTextView.text = item.articles[index].title
                     val layoutParams = itemView.fl.layoutParams
                     layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT
                     itemView.fl.addView(coloredTextView, layoutParams)
                     coloredTextView.setOnClickListener {
-                        ToastUtil.show("我命油我不油天")
+                        WebViewActivity.startActivity(itemView.context, item.articles[index].link)
                     }
                 }
             }

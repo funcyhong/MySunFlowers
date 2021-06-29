@@ -6,8 +6,7 @@ import com.hong.mysunflowers.R
 import com.hong.mysunflowers.adapters.SYSTEM_BODY_PAGE_INDEX
 import com.hong.mysunflowers.adapters.SystemAdapter
 import com.hong.mysunflowers.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_system.tab
-import kotlinx.android.synthetic.main.fragment_system.viewpager
+import kotlinx.android.synthetic.main.fragment_system.*
 
 /**
  * 体系 主界面
@@ -40,6 +39,5 @@ class SystemFragment : BaseFragment() {
     override fun getLayoutId(): Int {
         return R.layout.fragment_system
     }
-
 
 }

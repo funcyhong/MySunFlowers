@@ -23,15 +23,22 @@ class FooterAdapter(private val retry: () -> Unit) :
 
     class FooterViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(retry: () -> Unit, loadState: LoadState) {
+            println("LoadState is ${getState(loadState)}")
             //加载失败时，点击重新请求
             view.bt_retry.setOnClickListener {
                 retry()
             }
-            run {
-                view.progress_bar.isVisible = loadState is LoadState.Loading
-                view.bt_retry.isVisible = loadState is LoadState.Error
-            }
+
+            view.progress_bar.isVisible = loadState is LoadState.Loading
+            view.bt_retry.isVisible = loadState is LoadState.Error
         }
+
+        private fun getState(loadState: LoadState): String = when (loadState) {
+            LoadState.Loading -> "Loading"
+            else -> "Error"
+        }
+
+
     }
 
     override fun onBindViewHolder(holder: FooterViewHolder, loadState: LoadState) {
@@ -41,7 +48,7 @@ class FooterAdapter(private val retry: () -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): FooterViewHolder {
         val layout =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_answers, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_paging_footer, parent, false)
         return FooterViewHolder(layout)
 
     }

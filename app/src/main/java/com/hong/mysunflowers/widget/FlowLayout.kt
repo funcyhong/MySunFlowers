@@ -32,7 +32,6 @@ class FlowLayout @JvmOverloads constructor(
             // 计算每一个child的宽高信息
             measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, useHeight.toInt())
             // 需要加上第一行本来的高度
-            println("每一个的高度${child.measuredHeight}")
             if (index == 0) showHeight += child.measuredHeight
             if (child.measuredWidth + spacingX + useWidth > specWidthSize) {   // 一行展示不下了
                 // 计算使用的高度
@@ -54,7 +53,6 @@ class FlowLayout @JvmOverloads constructor(
             // 更新使用的宽度
             useWidth = (useWidth + child.measuredWidth + spacingX).toInt()
         }
-        println("总的高度$showHeight")
         setMeasuredDimension(specWidthSize, showHeight.toInt())
     }
 

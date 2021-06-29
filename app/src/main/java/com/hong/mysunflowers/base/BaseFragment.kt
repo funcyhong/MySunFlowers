@@ -13,7 +13,7 @@ import com.hong.mysunflowers.dialogs.LoadingDialog
  */
 abstract class BaseFragment : Fragment() {
 
-    private lateinit var mContext: Context
+    lateinit var mContext: Context
     private lateinit var mLoadingDialog: LoadingDialog
 
     override fun onCreateView(
